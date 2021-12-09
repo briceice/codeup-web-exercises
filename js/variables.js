@@ -42,7 +42,12 @@ console.log(!!"false")
 console.log(!!"0")
 
 let sample = "Hello Codeup";
-sample += " Class"
+console.log(sample.length)
+console.log(sample.toUpperCase())
+console.log(sample += " Students")
+console.log(sample.replace("Students", "Class"))
+console.log(sample.indexOf("c")) // "c" is not present, returns -1
+console.log(sample.indexOf("C"))
 console.log(sample.substr(6, 6)) // "c"(non existent) returns -1
 
 let rental1 = 3
