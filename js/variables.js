@@ -14,12 +14,18 @@ let perplexed;
 console.log(perplexed + 2)
 
 let price = 2.7;
-console.log(price.toFixed(2)) // not 2.70?
+console.log(price.toFixed(2))
 
-// let price2 = "2.7";
-// console.log(price2.toFixed(2))
+let price2 = "2.7";
+console.log(parseFloat(price2).toFixed(2))
 
 console.log(isNaN(0))
+
+console.log(isNaN(true))
+
+console.log(NaN == NaN)
+
+console.log(isNaN(NaN))
 
 console.log(!true)
 
