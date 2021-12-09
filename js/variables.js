@@ -35,3 +35,40 @@ console.log(!!"false")
 
 console.log(!!"0")
 
+let sample = "Hello Codeup";
+sample += " Class"
+console.log(sample.substr(6, 6)) // "c"(non existent) returns -1
+
+let rental1 = 3
+let rental2 = 5
+let rental3 = 1
+let rentalRate = 3
+let cost = ((rental1 + rental2 + rental3) * rentalRate)
+console.log(cost)
+
+let rateGoggle = 400
+let rateAmazon = 380
+let rateFacebook = 350
+let hoursGoogle = 6
+let hoursAmazon = 4
+let hoursFacebook = 10
+let payment = ((rateGoggle * hoursGoogle) + (rateAmazon * hoursAmazon) + (rateFacebook * hoursFacebook))
+console.log(payment)
+
+let classFull = false
+let scheduleConflict = false
+let enroll = !classFull && !scheduleConflict
+console.log(enroll)
+
+let itemsBought = 3
+let offerActive = true
+let premium = true
+let offerApplied = (premium || itemsBought > 2) && offerActive
+console.log(offerApplied)
+
+let username = "codeup";
+let password = "notastrongpassword";
+console.log(password.length >= 5)
+console.log(password.indexOf(username) != true)
+console.log(username.length <= 20)
+console.log(username.trim() == username && password.trim() == password)
