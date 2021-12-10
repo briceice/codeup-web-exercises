@@ -48,7 +48,7 @@ console.log(sample += " Students")
 console.log(sample.replace("Students", "Class"))
 console.log(sample.indexOf("c")) // "c" is not present, returns -1
 console.log(sample.indexOf("C"))
-console.log(sample.substr(6, 6)) // "c"(non existent) returns -1
+console.log(sample.substr(6, 6))
 
 let rental1 = 3
 let rental2 = 5
@@ -68,8 +68,8 @@ console.log(payment)
 
 let classFull = false
 let scheduleConflict = false
-let enroll = !classFull && !scheduleConflict
-console.log(enroll)
+let canEnroll = !classFull && !scheduleConflict
+console.log(canEnroll)
 
 let itemsBought = 3
 let offerActive = true
