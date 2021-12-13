@@ -73,8 +73,8 @@
      * > calculateTip(0.15, 33.42) // returns 5.013
      */
 
-    function calculateTip(a, b) {
-        return a * b
+    function calculateTip(percent, bill) {
+        return percent * bill
     }
 
     /**
@@ -101,8 +101,8 @@
      * > applyDiscount(45.99, 0.12) // 40.4712
      */
 
-    function applyDiscount(y, z) {
-        return y - (y * z)
+    function applyDiscount(price, discountPercent) {
+        return price - (price * discountPercent)
     }
 
 })();
