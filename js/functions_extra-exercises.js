@@ -146,12 +146,11 @@
     console.log(isLowerCase("a"))
 //     - Make a function named `hasLowerCase(string)` that returns if a string has any
 //     lower cased letter
-//     function hasLowerCase(string) {
-//         let lowerCase = string.toLowerCase();
-//         return string.match(lowerCase);
-//     }
-//
-//     console.log(hasLowerCase("a"))
+    function hasLowerCase(string) {
+        return string.toUpperCase() !== string
+    }
+
+    console.log(hasLowerCase("has lowercase"))
 //     - Make a function named `isSpace(letter)` that returns if a character is a space
 //     character
     function isSpace(letter) {
@@ -245,28 +244,103 @@
 
     console.log(squareRoot(4))
 //     - Write a function named `cubeRoot(n)` that returns the cube root of the input
+    function cubeRoot(n) {
+        return Math.cbrt(n);
+    }
+
+    console.log(cubeRoot(8))
 //     - Write a function named `invertSign(number)` that returns a negative version of
 //     a postive number, a positve version of negative, and false for all else.
+    function invertSign(number) {
+        if (typeof number !== "number") {
+            return false
+        } else {
+            return -number
+        }
+    }
+
+    console.log(invertSign("hi"))
 //     - Write a function named `degreesToRadians(number)`
+    function degreesToRadians(number) {
+        return number * (Math.PI / 180)
+    }
+
+    console.log(degreesToRadians(360))
 //     - Write a function named `radiansToDegrees(number)`
+    function radiansToDegrees(number) {
+        return number / (Math.PI / 180)
+    }
+
+    console.log(radiansToDegrees(2*Math.PI))
 //     - Make a function named `isBlank(input)` that determines if a given input is
 //     spaces, newline characters, or tabs.
+    function isBlank(letter) {
+        let blankCheck = letter.trim();
+        return letter !== blankCheck
+    }
+
+    console.log(isBlank("\n"))
 //     - Make a function named `trim(string)` that removes empty spaces before and
 //     after the input.
+    function trim(string) {
+        return string.trim();
+    }
+
+    console.log(trim(" trim me please "))
 //     - Make a function named `areEqual(input1, input2)` that returns if both inputs
 //     have the same value
+    function areEqual(input1, input2) {
+        return input1 == input2
+    }
+
+    console.log(areEqual(2, "2"))
 //     - Make a function named `areIdentical(input1, input2)` that returns if both
 //         inputs are same value and data type.
+    function areIdentical(input1, input2) {
+        return input1 === input2
+    }
+
+    console.log(areIdentical(2, "2"))
 //     - Make a function named `not(input)` returns the input with a flipped boolean
+    function not(input) {
+        return !input
+    }
+
+    console.log(not(false))
 //     - Make a function named `notNot(input)` that the negation of the negation of the
 //     input.
+    function notNot(input) {
+        return !!input
+    }
+
+    console.log(notNot(true))
 //     - Make a function named `and(predicate1, predicate2)` that returns the logical
 //     operation of AND
+    function and(predicate1, predicate2) {
+        return predicate1 && predicate2
+    }
+
+    console.log(and(true, false))
 //     - Make a function named `or(predicate1, predicate2)` that returns the logical
 //     operation of OR
+    function or(predicate1, predicate2) {
+        return predicate1 || predicate2
+    }
+
+    console.log(or(true, false))
 //     - Write a function called `reverseString(string)` that reverses a string
+    function reverseString(string) {
+        return string.split("").reverse().join("");
+    }
+
+    console.log(reverseString("Hello"))
 //     - Make a function named `absoluteValue(number)` that returns the absolute value
 //     of a number.
+    function absoluteValue(number) {
+        return Math.abs(number)
+    }
+
+    console.log(absoluteValue(-5))
 //     - Make a function named `rollDice(sides)` that takes in an argument containing
 //     the number of sides the die should have. Generate a random number between 1 up
 //     to and including the number of sides.
