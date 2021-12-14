@@ -20,20 +20,20 @@
  * console.logging the function's return value
  */
 
-function analyzeColor(color) {
-    color = color.toLowerCase();
-    if (color === "blue") {
-        return "Blue is the color of the sky"
-    } else if (color === "red") {
-        return "Strawberries are red"
-    } else if (color === "green") {
-        return "The grass is green"
-    } else {
-        return "I don't know anything about " + color
-    }
-}
+// function analyzeColor(color) {
+//     color = color.toLowerCase();
+//     if (color === "blue") {
+//         return "Blue is the color of the sky"
+//     } else if (color === "red") {
+//         return "Strawberries are red"
+//     } else if (color === "green") {
+//         return "The grass is green"
+//     } else {
+//         return "I don't know anything about " + color
+//     }
+// }
 
-    console.log(analyzeColor("purple"))
+    // console.log(analyzeColor("purple"))
 
 // Don't change the next two lines!
 // These lines create two variables for you:
@@ -48,12 +48,30 @@ var randomColor = colors[Math.floor(Math.random() * colors.length)];
  * You should see a different message every time you refresh the page
  */
 
-    console.log(analyzeColor(randomColor))
+    // console.log(analyzeColor(randomColor))
 
 /**
  * TODO:
  * Comment out the code above, and refactor your function to use a switch-case statement
  */
+
+function analyzeColor() {
+    let color = prompt("What is your favorite color?")
+    color = color.toLowerCase();
+    switch (color) {
+        case "blue":
+            alert("Blue is the color of the sky")
+            break;
+        case "red":
+            alert("Strawberries are red")
+            break;
+        case "green":
+            alert("The grass is green")
+            break;
+        default:
+            alert("I don't know anything about " + color)
+    }
+}
 
 /**
  * TODO:
@@ -61,6 +79,8 @@ var randomColor = colors[Math.floor(Math.random() * colors.length)];
  * user to your `analyzeColor` function. Alert the return value from your
  * function to show it to the user.
  */
+
+analyzeColor();
 
 /* ########################################################################## */
 
@@ -84,6 +104,34 @@ var randomColor = colors[Math.floor(Math.random() * colors.length)];
  * return value.
  */
 
+function calculateTotal(luckyNumber, price) {
+    switch (luckyNumber) {
+        case 0:
+            alert("The price is " + price)
+            break;
+        case 1:
+            alert("The discounted price is " + price * .9)
+            break;
+        case 2:
+            alert("The discounted price is " + price * .75)
+            break;
+        case 3:
+            alert("The discounted price is " + price * .65)
+            break;
+        case 4:
+            alert("The discounted price is " + price * .5)
+            break;
+        case 5:
+            alert("everything is free!!")
+            break;
+        default:
+            alert("Please try again.")
+            break;
+    }
+}
+
+    // console.log(calculateTotal(1, 100))
+
 /**
  * TODO:
  * Uncomment the line below to generate a random number between 0 and 5.
@@ -93,7 +141,10 @@ var randomColor = colors[Math.floor(Math.random() * colors.length)];
  * price before the discount was, and what their price after the discount is.
  */
 // Generate a random number between 0 and 6
-// var luckyNumber = Math.floor(Math.random() * 6);
+var luckyNumber = Math.floor(Math.random() * 6);
+
+alert("Your lucky number is " + luckyNumber)
+calculateTotal(luckyNumber, prompt("What was your bill?"));
 
 /**
  * TODO:
@@ -113,4 +164,38 @@ var randomColor = colors[Math.floor(Math.random() * colors.length)];
  * Can you refactor your code to use functions?
  * HINT: The way we prompt for a value could be improved
  */
+
+function inputEvaluation() {
+    let confirmation = confirm("Would you like to enter a number?");
+    if (confirmation) {
+        let input = prompt("Please enter a number.")
+        switch (!isNaN(input)) {
+            case true:
+                if (input % 2 === 0) {
+                    alert("Your number is even.")
+                } else {
+                    alert("Your number is odd.")
+                }
+
+                alert("Your number plus 100 is " + (parseInt(input) + 100))
+
+                if (input > 0) {
+                    alert("Your number is positive.")
+                } else if (input < 0) {
+                    alert("Your number is negative.")
+                } else {
+                    alert("Your number is zero.")
+                }
+                break;
+            default:
+                alert("Sorry that was not a number.");
+                break;
+        }
+    } else {
+        alert("OK then.")
+    }
+}
+
+inputEvaluation();
+
 })();
