@@ -15,3 +15,11 @@ function isFive(x) {
 console.log(isFive(4))
 console.log(isFive(5))
 console.log(isFive("5"))
+
+// 12/14 Make a function named isMultipleOfThree that takes in an input and returns a boolean indicating whether or not the input is a multiple of three.
+function isMultipleOfThree(x) {
+    return x % 3 === 0
+}
+
+console.log(isMultipleOfThree(6))
+console.log(isMultipleOfThree(-3))
