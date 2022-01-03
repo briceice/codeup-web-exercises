@@ -41,53 +41,86 @@
 // Write the code necessary to output the first 50 prime numbers
 // Recommend starting your loop at 1 and ending your loop once you've calculated 50 prime numbers.
 // https://en.wikipedia.org/wiki/Prime_number
-let count = 1;
-let limit = 50;
-let n = 1;
-while (count <= limit) {
-    trialDivision(n);
-        if (trialDivision(n).length === 1) {
-            console.log(n + " is prime number " + count + ".");
-            n++;
-            count++;
-        } else {
-            n++;
-        }
+// let count = 1;
+// let limit = 50;
+// let n = 1;
+// while (count <= limit) {
+//     trialDivision(n);
+//         if (trialDivision(n).length === 1) {
+//             console.log(n + " is prime number " + count + ".");
+//             n++;
+//             count++;
+//         } else {
+//             n++;
+//         }
+// }
+//
+// //https://www.blogcyberini.com/2018/04/algoritmo-fatoracao-de-numeros-inteiros-divisao-por-tentativa.html
+// //GitHub: HenriqueIni
+//
+// // Trial Division factorization algorithm
+// // Returns a list of prime factors of n
+// function trialDivision(n){
+//     // Factors are stored in an array
+//     var factors = [];
+//
+//     // Check if 2 is a factor
+//     while(n % 2 === 0){
+//         factors.push(2);
+//         n = n / 2;
+//     }
+//
+//     // Now check for possible odd factors
+//     // Only odd ones are possible
+//     var d = 3; // Possible factors
+//     var d2 = 9; // d2 = d * d
+//     while(d2 <= n){
+//         // If d is a factor, do the division and store the factor
+//         if(n % d === 0){
+//             factors.push(d);
+//             n = n / d;
+//         }else{
+//             // If d is not a factor, check the next
+//             d = d + 2;
+//             d2 = d * d; // d2 = d*d
+//         }
+//     }
+//     // This condition is needed when n is prime
+//     if(n > 1){
+//         factors.push(n);
+//     }
+//     return factors;
+// }
+
+// 1/3 add, square, sumOfSquares
+// function add(num1, num2) {
+//     return num1 + num2;
+// }
+//
+// function square(numToSqr) {
+//     return numToSqr * numToSqr;
+// }
+//
+// function sumOfSquares(a, b) {
+//     a = square(a);
+//     b = square(b);
+//     return add(a, b);
+// }
+//
+// console.log(sumOfSquares(5, 10));
+
+function getFizzBuzz(startingNum) {
+    if ((startingNum % 3 === 0) && (startingNum % 5 === 0)) {
+        return "FIZZ BUZZ";
+    } else if (startingNum % 3 === 0) {
+        console.log("Fizz");
+        return startingNum;
+    } else if (startingNum % 5 === 0) {
+        console.log("Buzz");
+        return startingNum;
+    } else {
+        return startingNum + " was neither Fizz, nor Buzz.";
+    }
 }
 
-//https://www.blogcyberini.com/2018/04/algoritmo-fatoracao-de-numeros-inteiros-divisao-por-tentativa.html
-//GitHub: HenriqueIni
-
-// Trial Division factorization algorithm
-// Returns a list of prime factors of n
-function trialDivision(n){
-    // Factors are stored in an array
-    var factors = [];
-
-    // Check if 2 is a factor
-    while(n % 2 === 0){
-        factors.push(2);
-        n = n / 2;
-    }
-
-    // Now check for possible odd factors
-    // Only odd ones are possible
-    var d = 3; // Possible factors
-    var d2 = 9; // d2 = d * d
-    while(d2 <= n){
-        // If d is a factor, do the division and store the factor
-        if(n % d === 0){
-            factors.push(d);
-            n = n / d;
-        }else{
-            // If d is not a factor, check the next
-            d = d + 2;
-            d2 = d * d; // d2 = d*d
-        }
-    }
-    // This condition is needed when n is prime
-    if(n > 1){
-        factors.push(n);
-    }
-    return factors;
-}
+console.log(getFizzBuzz(2));
