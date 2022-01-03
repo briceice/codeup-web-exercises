@@ -109,18 +109,51 @@
 //
 // console.log(sumOfSquares(5, 10));
 
-function getFizzBuzz(startingNum) {
-    if ((startingNum % 3 === 0) && (startingNum % 5 === 0)) {
-        return "FIZZ BUZZ";
-    } else if (startingNum % 3 === 0) {
-        console.log("Fizz");
-        return startingNum;
-    } else if (startingNum % 5 === 0) {
-        console.log("Buzz");
-        return startingNum;
+// function getFizzBuzz(startingNum) {
+//     if ((startingNum % 3 === 0) && (startingNum % 5 === 0)) {
+//         return "FIZZ BUZZ";
+//     } else if (startingNum % 3 === 0) {
+//         console.log("Fizz");
+//         return startingNum;
+//     } else if (startingNum % 5 === 0) {
+//         console.log("Buzz");
+//         return startingNum;
+//     } else {
+//         return startingNum + " was neither Fizz, nor Buzz.";
+//     }
+// }
+//
+// console.log(getFizzBuzz(2));
+
+// function getPassword() {
+//     let password = "password123"
+//     let input = prompt("Please enter password")
+//     while (input !== password) {
+//         input = prompt("Please try again");
+//     }
+//     alert("Your password was correct!")
+// }
+//
+// getPassword();
+
+function getMeaningOfLife(meaningfulNum) {
+    let counter = 0;
+    if (isNaN(meaningfulNum)) {
+        console.log(meaningfulNum + " was not so meaningful.")
+    } else if (meaningfulNum == Infinity) {
+        console.log(meaningfulNum + " was too big.")
+    } else if (meaningfulNum < 0) {
+        console.log(meaningfulNum + " was too small.")
     } else {
-        return startingNum + " was neither Fizz, nor Buzz.";
+        meaningfulNum = Number(meaningfulNum);
+        while (counter !== meaningfulNum) {
+            counter++;
+        }
+        console.log("The meaning of life, the universe, and everything is " + meaningfulNum)
+    }
+    if (meaningfulNum === 42) {
+        console.log("Did you bring your towel?")
     }
 }
 
-console.log(getFizzBuzz(2));
+getMeaningOfLife(42);
