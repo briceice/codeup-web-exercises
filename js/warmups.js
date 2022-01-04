@@ -1,3 +1,4 @@
+"use strict";
 // // 12/10
 // let creditScore = 720;
 // let cashOnHand = 5000;
@@ -136,24 +137,99 @@
 //
 // getPassword();
 
-function getMeaningOfLife(meaningfulNum) {
-    let counter = 0;
-    if (isNaN(meaningfulNum)) {
-        console.log(meaningfulNum + " was not so meaningful.")
-    } else if (meaningfulNum == Infinity) {
-        console.log(meaningfulNum + " was too big.")
-    } else if (meaningfulNum < 0) {
-        console.log(meaningfulNum + " was too small.")
-    } else {
-        meaningfulNum = Number(meaningfulNum);
-        while (counter !== meaningfulNum) {
-            counter++;
-        }
-        console.log("The meaning of life, the universe, and everything is " + meaningfulNum)
-    }
-    if (meaningfulNum === 42) {
-        console.log("Did you bring your towel?")
-    }
+// function getMeaningOfLife(meaningfulNum) {
+//     let counter = 0;
+//     if (isNaN(meaningfulNum)) {
+//         console.log(meaningfulNum + " was not so meaningful.")
+//     } else if (meaningfulNum == Infinity) {
+//         console.log(meaningfulNum + " was too big.")
+//     } else if (meaningfulNum < 0) {
+//         console.log(meaningfulNum + " was too small.")
+//     } else {
+//         meaningfulNum = Number(meaningfulNum);
+//         while (counter !== meaningfulNum) {
+//             counter++;
+//         }
+//         console.log("The meaning of life, the universe, and everything is " + meaningfulNum)
+//     }
+//     if (meaningfulNum === 42) {
+//         console.log("Did you bring your towel?")
+//     }
+// }
+//
+// getMeaningOfLife(42);
+
+// 1/4
+// TODO: MINI EXERCISE
+//      Write a function which uses a for-loop and
+//      -> accepts the number of times to iterate as a parameter
+//      -> only logs *if the iteration number is odd*
+
+// function oddLoop(iterations) {
+//     for (let i = 1; i <= iterations; i++) {
+//         if (i % 2 !== 0) {
+//             console.log("This is iteration number " + i)
+//         }
+//     }
+// }
+//
+// oddLoop(12);
+
+// TODO: MINI EXERCISE
+//      Write a function which uses a for-loop and
+//      -> accepts the number of times to iterate as a parameter
+//      -> logs "This is an even iteration" on the evens
+//      -> logs "This is an odd iteration" on the odds
+
+// function evenLoop(iterations) {
+//     for (let i = 1; i <= iterations; i++) {
+//         if (i % 2 === 0) {
+//             console.log(i + ": This is an even iteration")
+//         } else {
+//             console.log(i + ": This is an odd iteration")
+//         }
+//     }
+// }
+//
+// evenLoop(20);
+
+// TODO: MINI EXERCISE
+//      Make a new version of your getPassword function using a for-loop!
+//      -> The purpose of the for-loop is to only allow a maximum number of attempts
+//          -> If the max attempt used unsuccessfully, alert the user of such and RETURN or BREAK
+//      -> Once the user enters the correct password, use the 'break' keyword to end the loop
+//      -> After the loop concludes, alert the use they have entered the correct password
+//
+// function getPasswordLoop(maxAttempts) {
+//     let password = "password123";
+//     let input = "";
+//     for (let i = 1; i <= maxAttempts ; i++) {
+//         input = prompt("Please enter password");
+//         if (input === password) {
+//             break;
+//         } else {
+//             alert("Incorrect password, " + (maxAttempts - i) + " attempts remaining.");
+//         }
+//         if (i === maxAttempts) {
+//             alert("Maximum attempts reached");
+//             return;
+//         }
+//     }
+//     alert("Correct password");
+// }
+//
+// getPasswordLoop(3);
+
+// -Create an array with five strings representing your favorite artists (music or otherwise) and store it in a variable called favoriteArtists
+// -Write a function that accepts an array as a parameter and...
+// -> logs the first, third, and last elements of that array
+// -Invoke your function and pass favoriteArtists as an argument
+
+let favoriteArtists = ["kanye", "eminem", "chester", "pendulum", "a&b"]
+function takeArray(input) {
+    console.log(input[0])
+    console.log(input[2])
+    console.log(input[4])
 }
 
-getMeaningOfLife(42);
+takeArray(favoriteArtists);
