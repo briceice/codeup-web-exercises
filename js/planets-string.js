@@ -28,4 +28,11 @@
     var brString = planetsArray.join("<br>")
     console.log(brString);
 
+    planetsArray.unshift("<ul>");
+    console.log(planetsArray);
+    planetsArray.push("<ul>");
+    console.log(planetsArray);
+    var ulString = planetsArray.join("<li>");
+    console.log(ulString);
+
 })();

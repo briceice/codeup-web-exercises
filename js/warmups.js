@@ -225,11 +225,63 @@
 // -> logs the first, third, and last elements of that array
 // -Invoke your function and pass favoriteArtists as an argument
 
-let favoriteArtists = ["kanye", "eminem", "chester", "pendulum", "a&b"]
-function takeArray(input) {
-    console.log(input[0])
-    console.log(input[2])
-    console.log(input[4])
+// let favoriteArtists = ["kanye", "eminem", "chester", "pendulum", "a&b"]
+// function takeArray(input) {
+//     console.log(input[0])
+//     console.log(input[2])
+//     console.log(input[4])
+// }
+//
+// takeArray(favoriteArtists);
+
+// 1/6
+// Declare an array of two objects for movies
+//     that have the following member values:
+//     title (string)
+// year released (int)
+// rating (string)
+// director (string)
+// imdb rating (decimal)
+// academy award win (boolean)
+// Use imdb.com to look up the info or make up your own info
+// write a printMovie function that takes a movie as a parameter and prints its info.
+//     call it with each of your array elements.
+//     write a printMovies function that takes an array as a parameter, iterates over the array, and calls printMovie on each of the array elements
+
+let movies = [];
+
+movies[0] = {
+    title : "Good Will Hunting",
+    year : 1997,
+    rating : "R",
+    director : { firstName : "Gus", lastName : "Van Sant"},
+    imdb_rating : 8.3,
+    academy_award_win : true,
+    genres : ["Drama", "Romance"]
 }
 
-takeArray(favoriteArtists);
+movies[1] = {
+    title : "Saving Private Ryan",
+    year : 1998,
+    rating : "R",
+    director : { firstName : "Steven", lastName : "Spielberg"},
+    imdb_rating : 8.6,
+    academy_award_win : true,
+    genres : ["Drama", "War"]
+}
+
+function printMovie(movie) {
+    return movies[movie]
+}
+
+// console.log(printMovie(0));
+// console.log(printMovie(1));
+
+function printMovies(array) {
+    for (let i = 0; i < array.length; i++) {
+        console.log(printMovie(i));
+    }
+}
+
+printMovies(movies);
+console.log(movies[0].director.firstName);
