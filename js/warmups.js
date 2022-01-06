@@ -251,23 +251,23 @@
 let movies = [];
 
 movies[0] = {
-    title : "Good Will Hunting",
-    year : 1997,
-    rating : "R",
-    director : { firstName : "Gus", lastName : "Van Sant"},
-    imdb_rating : 8.3,
-    academy_award_win : true,
-    genres : ["Drama", "Romance"]
+    title: "Good Will Hunting",
+    year: 1997,
+    rating: "R",
+    director: {firstName: "Gus", lastName: "Van Sant"},
+    imdb_rating: 8.3,
+    academy_award_win: true,
+    genres: ["Drama", "Romance"]
 }
 
 movies[1] = {
-    title : "Saving Private Ryan",
-    year : 1998,
-    rating : "R",
-    director : { firstName : "Steven", lastName : "Spielberg"},
-    imdb_rating : 8.6,
-    academy_award_win : true,
-    genres : ["Drama", "War"]
+    title: "Saving Private Ryan",
+    year: 1998,
+    rating: "R",
+    director: {firstName: "Steven", lastName: "Spielberg"},
+    imdb_rating: 8.6,
+    academy_award_win: true,
+    genres: ["Drama", "War"]
 }
 
 function printMovie(movie) {
@@ -283,5 +283,18 @@ function printMovies(array) {
     }
 }
 
+// printMovies(movies);
+
+movies[0].rate = function (rating) {
+    this.myRating = rating;
+}
+
+movies[0].rate(9.5);
+
+movies[1].rate = function (rating) {
+    this.myRating = rating;
+}
+
+movies[1].rate(8.7);
+
 printMovies(movies);
-console.log(movies[0].director.firstName);
