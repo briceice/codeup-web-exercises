@@ -1,3 +1,48 @@
-.fancy-header {
-    color: purple;
+/*.fancy-header {*/
+/*    color: purple;*/
+/*}*/
+
+#header {
+    text-align: center;
+}
+
+h1, h2 {
+    color: #454851;
+    text-decoration: underline;
+}
+
+body {
+    /*background-color: #edb88b;*/
+    background-image: url("../img/ducky.png");
+    background-repeat: repeat;
+    font-family: "American Typewriter", serif;
+}
+
+ul {
+    list-style: square;
+}
+
+ol {
+    list-style-type: lower-greek;
+}
+
+td {
+    padding: 15px;
+    font-size: smaller;
+}
+
+a:link {
+    color:red;
+}
+
+a:visited {
+    color:#ff6a00;
+}
+
+a:hover {
+    color:blue;
+}
+
+a:active {
+    color:green;
 }
