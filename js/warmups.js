@@ -248,53 +248,65 @@
 //     call it with each of your array elements.
 //     write a printMovies function that takes an array as a parameter, iterates over the array, and calls printMovie on each of the array elements
 
-let movies = [];
-
-movies[0] = {
-    title: "Good Will Hunting",
-    year: 1997,
-    rating: "R",
-    director: {firstName: "Gus", lastName: "Van Sant"},
-    imdb_rating: 8.3,
-    academy_award_win: true,
-    genres: ["Drama", "Romance"]
-}
-
-movies[1] = {
-    title: "Saving Private Ryan",
-    year: 1998,
-    rating: "R",
-    director: {firstName: "Steven", lastName: "Spielberg"},
-    imdb_rating: 8.6,
-    academy_award_win: true,
-    genres: ["Drama", "War"]
-}
-
-function printMovie(movie) {
-    return movies[movie]
-}
+// let movies = [];
+//
+// movies[0] = {
+//     title: "Good Will Hunting",
+//     year: 1997,
+//     rating: "R",
+//     director: {firstName: "Gus", lastName: "Van Sant"},
+//     imdb_rating: 8.3,
+//     academy_award_win: true,
+//     genres: ["Drama", "Romance"]
+// }
+//
+// movies[1] = {
+//     title: "Saving Private Ryan",
+//     year: 1998,
+//     rating: "R",
+//     director: {firstName: "Steven", lastName: "Spielberg"},
+//     imdb_rating: 8.6,
+//     academy_award_win: true,
+//     genres: ["Drama", "War"]
+// }
+//
+// function printMovie(movie) {
+//     return movies[movie]
+// }
 
 // console.log(printMovie(0));
 // console.log(printMovie(1));
 
-function printMovies(array) {
-    for (let i = 0; i < array.length; i++) {
-        console.log(printMovie(i));
-    }
-}
+// function printMovies(array) {
+//     for (let i = 0; i < array.length; i++) {
+//         console.log(printMovie(i));
+//     }
+// }
 
 // printMovies(movies);
 
-movies[0].rate = function (rating) {
-    this.myRating = rating;
+// movies[0].rate = function (rating) {
+//     this.myRating = rating;
+// }
+//
+// movies[0].rate(9.5);
+//
+// movies[1].rate = function (rating) {
+//     this.myRating = rating;
+// }
+//
+// movies[1].rate(8.7);
+//
+// printMovies(movies);
+
+// 1/13
+function arrayToString(myArray) {
+    let myString = ""
+    for (let i = 0; i < myArray.length; i++) {
+        myString += myArray[i] + " "
+    }
+    return myString;
 }
 
-movies[0].rate(9.5);
-
-movies[1].rate = function (rating) {
-    this.myRating = rating;
-}
-
-movies[1].rate(8.7);
-
-printMovies(movies);
+let anArray = ["this", "is", "an", "array", "?"]
+console.log(arrayToString(anArray));
