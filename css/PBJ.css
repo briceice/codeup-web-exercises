@@ -1,0 +1,41 @@
+.ingredient {
+    padding: .5em 1em;
+    border: 1px solid   ;
+    width: 30%;
+    margin: .5em auto;
+    font-weight: bold;
+}
+
+.top-bread {
+    border-top-left-radius: .5em;
+    border-top-right-radius: .5em;
+    background-color: rgba(210, 180, 140, 0.6);
+    color: #aa8c64;
+}
+
+.jelly {
+    background-color: rgba(0, 0, 255, 0.3);
+    color: rgb(0, 0, 175);
+}
+
+#grape {
+    color: #6F2DA8;
+}
+#strawberry {
+    color: #FC5A8D;
+}
+#peach {
+    color: #FFCBC4;
+}
+
+.pb {
+    background-color: rgba(205, 145, 65, .6);
+    color: rgba(205, 145, 65);
+}
+
+.bottom-bread {
+    border-bottom-left-radius: .5em;
+    border-bottom-right-radius: .5em;
+    background-color: rgba(210, 180, 140, 0.6);
+    color: #aa8c64;
+}
