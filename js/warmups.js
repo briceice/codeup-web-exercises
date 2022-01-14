@@ -300,13 +300,29 @@
 // printMovies(movies);
 
 // 1/13
-function arrayToString(myArray) {
-    let myString = ""
-    for (let i = 0; i < myArray.length; i++) {
-        myString += myArray[i] + " "
+// function arrayToString(myArray) {
+//     let myString = ""
+//     for (let i = 0; i < myArray.length; i++) {
+//         myString += myArray[i] + " "
+//     }
+//     return myString;
+// }
+//
+// let anArray = ["this", "is", "an", "array", "?"]
+// console.log(arrayToString(anArray));
+
+// 1/14
+function removeAll(array, value) {
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] === value) {
+            array.splice(i, 1)
+            i -= 1
+        }
     }
-    return myString;
+    return array;
 }
 
-let anArray = ["this", "is", "an", "array", "?"]
-console.log(arrayToString(anArray));
+var bugs = ["mosquito", "ant", "scorpion", "ant", "ant", "mosquito", "typo", "reference error", "type error"];
+// console.log(removeAll(bugs, "ant"))
+// console.log(removeAll(bugs, "mosquito"))
+// console.log(removeAll(bugs, "roach"))
