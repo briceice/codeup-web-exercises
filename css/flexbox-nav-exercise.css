@@ -30,7 +30,7 @@ a:hover {
 }
 
 .top-nav {
-    font-weight: bold;
+    /*font-weight: bold;*/
     background: gray;
     display: flex;
     flex-direction: row;
