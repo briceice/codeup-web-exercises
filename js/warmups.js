@@ -312,17 +312,40 @@
 // console.log(arrayToString(anArray));
 
 // 1/14
-function removeAll(array, value) {
-    for (let i = 0; i < array.length; i++) {
-        if (array[i] === value) {
-            array.splice(i, 1)
-            i -= 1
-        }
-    }
-    return array;
-}
-
-var bugs = ["mosquito", "ant", "scorpion", "ant", "ant", "mosquito", "typo", "reference error", "type error"];
+// function removeAll(array, value) {
+//     for (let i = 0; i < array.length; i++) {
+//         if (array[i] === value) {
+//             array.splice(i, 1)
+//             i -= 1
+//         }
+//     }
+//     return array;
+// }
+//
+// var bugs = ["mosquito", "ant", "scorpion", "ant", "ant", "mosquito", "typo", "reference error", "type error"];
 // console.log(removeAll(bugs, "ant"))
 // console.log(removeAll(bugs, "mosquito"))
 // console.log(removeAll(bugs, "roach"))
+
+// 1/19
+function getNthCat(cats, n) {
+    return cats[n]
+}
+
+var myCats = [
+    {
+        catName: "Fifi",
+        age: 5
+    },
+    {
+        catName: "Fluffy",
+        age: 3
+    },
+    {
+        catName: "Abby",
+        age: 7
+    }
+];
+
+// print out the cat at index 1
+console.log(getNthCat(myCats, 1));
