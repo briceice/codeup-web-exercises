@@ -1,0 +1,30 @@
+.navbar-collapse ul {
+    margin-right: 2em;
+}
+
+.navbar-collapse>button {
+    margin-left: auto;
+}
+
+.jumbotron {
+    background-image: url("../img/pizza.png");
+}
+
+.jumbotron>.container {
+    display: flex;
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+h1 {
+    color: rgba(0, 0, 0, 0.7);
+    margin: auto;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.order-options {
+    margin: 1em;
+}
