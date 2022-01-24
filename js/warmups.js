@@ -328,24 +328,35 @@
 // console.log(removeAll(bugs, "roach"))
 
 // 1/19
-function getNthCat(cats, n) {
-    return cats[n]
+// function getNthCat(cats, n) {
+//     return cats[n]
+// }
+//
+// var myCats = [
+//     {
+//         catName: "Fifi",
+//         age: 5
+//     },
+//     {
+//         catName: "Fluffy",
+//         age: 3
+//     },
+//     {
+//         catName: "Abby",
+//         age: 7
+//     }
+// ];
+//
+// // print out the cat at index 1
+// console.log(getNthCat(myCats, 1));
+
+// 1/24
+function reverseString(string) {
+    var revString = ""
+    for (let i = (string.length - 1); i >= 0; i--) {
+        revString += string[i];
+    }
+    return revString;
 }
 
-var myCats = [
-    {
-        catName: "Fifi",
-        age: 5
-    },
-    {
-        catName: "Fluffy",
-        age: 3
-    },
-    {
-        catName: "Abby",
-        age: 7
-    }
-];
-
-// print out the cat at index 1
-console.log(getNthCat(myCats, 1));
+console.log(reverseString("hello"));
