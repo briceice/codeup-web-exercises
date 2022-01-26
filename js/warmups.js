@@ -351,12 +351,27 @@
 // console.log(getNthCat(myCats, 1));
 
 // 1/24
-function reverseString(string) {
-    var revString = ""
-    for (let i = (string.length - 1); i >= 0; i--) {
-        revString += string[i];
+// function reverseString(string) {
+//     var revString = ""
+//     for (let i = (string.length - 1); i >= 0; i--) {
+//         revString += string[i];
+//     }
+//     return revString;
+// }
+//
+// console.log(reverseString("hello"));
+
+// 1/26
+// Example input: [95, 74, 86, 100]
+// Example output: 88.75
+function findAverage(array) {
+    let sum = 0
+    for (let i = 0; i < array.length; i++) {
+        sum += array[i]
     }
-    return revString;
+    let average = sum/array.length
+    return average
 }
 
-console.log(reverseString("hello"));
+let nums = [95, 74, 86, 100]
+console.log(findAverage(nums))
