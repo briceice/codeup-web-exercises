@@ -364,14 +364,22 @@
 // 1/26
 // Example input: [95, 74, 86, 100]
 // Example output: 88.75
-function findAverage(array) {
-    let sum = 0
-    for (let i = 0; i < array.length; i++) {
-        sum += array[i]
-    }
-    let average = sum/array.length
-    return average
+// function findAverage(array) {
+//     let sum = 0
+//     for (let i = 0; i < array.length; i++) {
+//         sum += array[i]
+//     }
+//     let average = sum/array.length
+//     return average
+// }
+//
+// let nums = [95, 74, 86, 100]
+// console.log(findAverage(nums))
+
+// 1/27
+function sumOfSquares(a, b) {
+    var sum = Math.pow(a, 2) + Math.pow(b, 2)
+    return sum
 }
 
-let nums = [95, 74, 86, 100]
-console.log(findAverage(nums))
+console.log(sumOfSquares(2, 3));
