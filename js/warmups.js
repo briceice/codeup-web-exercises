@@ -377,9 +377,28 @@
 // console.log(findAverage(nums))
 
 // 1/27
-function sumOfSquares(a, b) {
-    var sum = Math.pow(a, 2) + Math.pow(b, 2)
-    return sum
+// function sumOfSquares(a, b) {
+//     var sum = Math.pow(a, 2) + Math.pow(b, 2)
+//     return sum
+// }
+//
+// console.log(sumOfSquares(2, 3));
+
+// 2/1
+function whichStringIsLonger(string1, string2) {
+    if (typeof string1 !== "string" || typeof string2 !== "string") {
+        return false;
+    } else if (string1.length > string2.length) {
+        return "first";
+    } else if (string2.length > string1.length) {
+        return "second";
+    } else {
+        return "neither";
+    }
 }
 
-console.log(sumOfSquares(2, 3));
+console.log(whichStringIsLonger("bobby", "lou")); // returns first
+console.log(whichStringIsLonger("bob", "louise")); // returns second
+console.log(whichStringIsLonger("bob", "lou")); // returns neither
+console.log(whichStringIsLonger("bobby", 2)); // returns false
+console.log(whichStringIsLonger(1, "lou")); // returns false
