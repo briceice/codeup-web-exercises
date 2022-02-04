@@ -385,20 +385,30 @@
 // console.log(sumOfSquares(2, 3));
 
 // 2/1
-function whichStringIsLonger(string1, string2) {
-    if (typeof string1 !== "string" || typeof string2 !== "string") {
-        return false;
-    } else if (string1.length > string2.length) {
-        return "first";
-    } else if (string2.length > string1.length) {
-        return "second";
-    } else {
-        return "neither";
+// function whichStringIsLonger(string1, string2) {
+//     if (typeof string1 !== "string" || typeof string2 !== "string") {
+//         return false;
+//     } else if (string1.length > string2.length) {
+//         return "first";
+//     } else if (string2.length > string1.length) {
+//         return "second";
+//     } else {
+//         return "neither";
+//     }
+// }
+//
+// console.log(whichStringIsLonger("bobby", "lou")); // returns first
+// console.log(whichStringIsLonger("bob", "louise")); // returns second
+// console.log(whichStringIsLonger("bob", "lou")); // returns neither
+// console.log(whichStringIsLonger("bobby", 2)); // returns false
+// console.log(whichStringIsLonger(1, "lou")); // returns false
+
+function convertLowHighToObject(lowHigh) {
+    var lowHighArray = lowHigh.split(", ")
+    return  {
+        low: parseInt(lowHighArray[0]),
+        high: parseInt(lowHighArray[1])
     }
 }
 
-console.log(whichStringIsLonger("bobby", "lou")); // returns first
-console.log(whichStringIsLonger("bob", "louise")); // returns second
-console.log(whichStringIsLonger("bob", "lou")); // returns neither
-console.log(whichStringIsLonger("bobby", 2)); // returns false
-console.log(whichStringIsLonger(1, "lou")); // returns false
+console.log(convertLowHighToObject("35, 42"));
