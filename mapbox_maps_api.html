@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mapbox Map</title>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css' rel='stylesheet' />
+</head>
+<body>
+
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.js'></script>
+<script src="js/keys.js"></script>
+<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.min.js"></script>
+<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.css" type="text/css">
+
+
+<div id='map' style='width: 800px; height: 600px;'></div>
+<button type="button" id="zoom-5">Zoom 5</button>
+<button type="button" id="zoom-15">Zoom 15</button>
+<button type="button" id="zoom-20">Zoom 20</button>
+
+<script>
+    mapboxgl.accessToken = MAPBOX_API_KEY;
+    const map = new mapboxgl.Map({
+        container: 'map', // container ID
+        style: 'mapbox://styles/mapbox/streets-v11', // style URL
+        center: [-98.4916, 29.4260], // starting position [lng, lat]
+        zoom: 10 // starting zoom
+    });
+
+    map.addControl(
+        new MapboxGeocoder({
+            accessToken: mapboxgl.accessToken,
+            mapboxgl: mapboxgl
+        })
+    );
+
+    let setZoomFive = function (){
+        map = new mapboxgl.Map({
+            zoom: 5
+        })
+    }
+
+    $('#zoom-5').click(setZoomFive());
+
+    var marker = new mapboxgl.Marker().setLngLat([-98.4916, 29.4260]).addTo(map);
+</script>
+
+</body>
+</html>
