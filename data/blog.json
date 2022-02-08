@@ -16,5 +16,12 @@
             "sugar"
         ],
         "date": "February 14, 2015"
-    }
+    }, {
+    "title": "The Third Post",
+    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Viverra tellus in hac habitasse platea dictumst vestibulum rhoncus. Justo nec ultrices dui sapien eget mi. Ultrices tincidunt arcu non sodales neque. Habitasse platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper. Eget lorem dolor sed viverra ipsum nunc aliquet bibendum. Non blandit massa enim nec dui. Massa vitae tortor condimentum lacinia quis. Leo urna molestie at elementum eu. Pulvinar proin gravida hendrerit lectus. Venenatis lectus magna fringilla urna porttitor rhoncus.",
+    "categories": [
+        "testing"
+    ],
+    "date": "February 8, 2022"
+}
 ]

@@ -31,14 +31,7 @@
     // TODO: Create an AJAX GET request for the file under data/inventory.json
     $.ajax("/data/inventory.json").done(function(data, status, jqXhr){
         data.forEach(function(tool){
-            var newToolHTML = `
-            <tr>
-                <td>${tool.title}</td>
-                <td>${tool.quantity}</td>
-                <td>${tool.price}</td>
-                <td>${tool.categories}</td>
-            </tr>
-`
+            var newToolHTML = getNewTool(tool);
             $('#insertProducts').append(newToolHTML);
         })
     });
@@ -47,19 +40,23 @@
         $.ajax("/data/inventory.json").done(function(data, status, jqXhr){
             $('#insertProducts').children().remove();
             data.forEach(function(tool){
-                var newToolHTML = `
-            <tr>
-                <td>${tool.title}</td>
-                <td>${tool.quantity}</td>
-                <td>${tool.price}</td>
-                <td>${tool.categories}</td>
-            </tr>
-`
+                var newToolHTML = getNewTool(tool);
                 $('#insertProducts').append(newToolHTML);
             })
             console.log('table refreshed')
         })
     });
+
+    function getNewTool(tool){
+        return `
+            <tr>
+                <td>${tool.title}</td>
+                <td>${tool.quantity}</td>
+                <td>$${tool.price}</td>
+                <td>${tool.categories}</td>
+            </tr>
+`
+    }
 
     // TODO: Take the data from inventory.json and append it to the products table
     //       HINT: Your data should come back as a JSON object; use console.log() to inspect

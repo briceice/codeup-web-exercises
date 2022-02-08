@@ -16,8 +16,21 @@
     (function (){
         "use strict";
         $.ajax('data/blog.json').done(function(data, status, jqXhr){
+            data.forEach(function(post){
+                $('#posts').append(getPost(post));
+            })
+        });
 
-        })
+        function getPost(data){
+            var stringCategories = data.categories.join(', ')
+            return `
+<div class="jumbotron">
+  <h1 class="display-4">${data.title}</h1>
+  <p class="lead">${data.date} | Categories: ${stringCategories}</p>
+  <hr class="my-4">
+  <p>${data.content}</p>
+</div>`
+        }
     })();
 </script>
 
