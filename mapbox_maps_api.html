@@ -7,8 +7,9 @@
 </head>
 <body>
 
-<script src='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.js'></script>
 <script src="js/keys.js"></script>
+<script type="text/javascript" src="js/jquery-2.2.4.js"></script>
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.js'></script>
 <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.min.js"></script>
 <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.css" type="text/css">
 
@@ -27,22 +28,45 @@
         zoom: 10 // starting zoom
     });
 
+    let geoCoder = new MapboxGeocoder({
+        accessToken: mapboxgl.accessToken,
+        mapboxgl: mapboxgl,
+        marker: false
+    })
+
     map.addControl(
-        new MapboxGeocoder({
-            accessToken: mapboxgl.accessToken,
-            mapboxgl: mapboxgl
-        })
+        geoCoder
     );
 
-    let setZoomFive = function (){
-        map = new mapboxgl.Map({
-            zoom: 5
-        })
+    var marker = function(point){
+        return new mapboxgl.Marker().setLngLat(point).addTo(map);
     }
 
-    $('#zoom-5').click(setZoomFive());
+    var popup = function(description){
+        return new mapboxgl.Popup().setHTML(description).addTo(map);
+    }
 
-    var marker = new mapboxgl.Marker().setLngLat([-98.4916, 29.4260]).addTo(map);
+    geoCoder.on('result', function(e){
+        console.log(e)
+        marker(e.result.geometry.coordinates).setPopup(popup(e.result.place_name))
+    })
+
+    map.addControl(new mapboxgl.NavigationControl());
+
+    let setZoomFive = function (){
+        map.flyTo({zoom:5});
+    }
+    let setZoomFifteen = function (){
+        map.flyTo({zoom:15});
+    }
+    let setZoomTwenty = function (){
+        map.flyTo({zoom:20});
+    }
+
+    $('#zoom-5').click(setZoomFive);
+    $('#zoom-15').click(setZoomFifteen);
+    $('#zoom-20').click(setZoomTwenty);
+
 </script>
 
 </body>
