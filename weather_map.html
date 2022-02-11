@@ -3,118 +3,195 @@
 <head>
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
     <title>Weather Map</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <link href='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css' rel='stylesheet' />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+          integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css' rel='stylesheet'/>
     <style>
         #forecasts {
             display: flex;
             justify-content: space-evenly;
         }
+
         #forecast-day {
             width: 20%;
             margin-top: 1em;
         }
+
         #map {
             width: calc(100% - 30px);
             height: 35em;
             margin-bottom: 1em;
         }
+        #unit-selector {
+            position: absolute;
+            z-index: 1;
+            left: 15px;
+            top: 21em;
+        }
     </style>
 </head>
 <body>
 
+<select name="unit-selector" id="unit-selector">
+    <option value="imperial">Soccer</option>
+    <option value="metric">Football</option>
+</select>
 <div id="forecasts" class="container-fluid"></div>
 <div id='map' class="container-fluid"></div>
 
 <script type="text/javascript" src="js/jquery-2.2.4.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+        crossorigin="anonymous"></script>
 <script src='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.js'></script>
 <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.min.js"></script>
-<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.css" type="text/css">
+<link rel="stylesheet"
+      href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.css"
+      type="text/css">
 <script src="js/keys.js"></script>
 
 <script>
-"use strict";
-$(document).ready(function(){
+    "use strict";
+    $(document).ready(function () {
 
-    // <<------ openweather ------>>
-    function mapInit(lat, lon) {
-        $.get("https://api.openweathermap.org/data/2.5/onecall", {
-            APPID: OPENWEATHER_API_KEY,
-            lat: lat,
-            lon: lon,
-            exclude: "hourly,minutely",
-            units: "imperial"
-        }).done(function (data) {
-            var newForecastHTML = ''
-            for (let i = 0; i < 5; i++) {
-                newForecastHTML += getForecast(data.daily[i]);
-            }
-            $('#forecasts').html(newForecastHTML);
-        });
-    }
+        // <<------ openweather ------>>
+        function forecastInit(lat, lon, units) {
+            $.get("https://api.openweathermap.org/data/2.5/onecall", {
+                APPID: OPENWEATHER_API_KEY,
+                lat: lat,
+                lon: lon,
+                exclude: "hourly,minutely",
+                units: units
+            }).done(function (data) {
+                var newForecastHTML = ''
+                for (let i = 0; i < 5; i++) {
+                    newForecastHTML += getForecast(data.daily[i]);
+                }
+                $('#forecasts').html(newForecastHTML);
+            });
+        }
 
-    mapInit(29.4260, -98.4916);
+        var displayUnits = "imperial"
+        var displayUnitsTemp = "F"
+        var displayUnitsWind = "mph"
+        forecastInit(29.4260, -98.4916, displayUnits);
 
-    function getForecast(day){
-        return `
+        function getForecast(day) {
+            return `
                 <div id="forecast-day">
                     <div class="card">
                       <div class="card-header">
                         ${new Date(day.dt * 1000).toDateString()}
                       </div>
                       <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><strong>High:</strong> ${parseInt(day.temp.max)} F <strong>Low:</strong> ${parseInt(day.temp.min)} F</li>
+                        <li class="list-group-item"><strong>High:</strong> ${parseInt(day.temp.max)} <span>&#176;</span>${displayUnitsTemp} <strong>Low:</strong> ${parseInt(day.temp.min)} <span>&#176;</span>${displayUnitsTemp}</li>
                         <li class="list-group-item">${day.weather[0].description} <img src="https://openweathermap.org/img/wn/${day.weather[0].icon}.png"></li>
                         <li class="list-group-item"><strong>Humidity:</strong> ${day.humidity}%</li>
-                        <li class="list-group-item"><strong>Wind Speed:</strong> ${parseInt(day.wind_speed)} mph</li>
+                        <li class="list-group-item"><strong>Wind Speed:</strong> ${parseInt(day.wind_speed)} ${displayUnitsWind}</li>
                         <li class="list-group-item"><strong>Air Pressure:</strong> ${day.pressure}</li>
                       </ul>
                     </div>
                 </div>
             `
-    }
+        }
 
+        var prevLat = 29.4260
+        var prevLon = -98.4916
 
-    // <<--------- mapbox --------->>
-    mapboxgl.accessToken = MAPBOX_API_KEY;
-    const map = new mapboxgl.Map({
-        container: 'map', // container ID
-        style: 'mapbox://styles/mapbox/streets-v11', // style URL
-        center: [-98.4916, 29.4260], // starting position [lng, lat]
-        zoom: 10 // starting zoom
+        function changeUnits(){
+            $('#unit-selector').on('change', function (){
+                if ($('#unit-selector').val() === "imperial") {
+                    displayUnits = "imperial"
+                    displayUnitsTemp = "F"
+                    displayUnitsWind = "mph"
+                }
+                if ($('#unit-selector').val() === "metric") {
+                    displayUnits = "metric"
+                    displayUnitsTemp = "C"
+                    displayUnitsWind = "m/s"
+                }
+                forecastInit(prevLat, prevLon, displayUnits);
+            });
+        }
+
+        changeUnits();
+
+        // function convertUnits(){
+        //     $('#unit-selector').on('change', function (){
+        //         if ($('#unit-selector').val() === "imperial") {
+        //             for (let i = 0; i < 5; i++) {
+        //                 // console.log($('.temp-high').eq(i)[0].innerHTML)
+        //                 // console.log($('.temp-low').eq(i)[0].innerHTML)
+        //                 // console.log("F max:" + parseInt(tempMax[i] * 1.8 + 32))
+        //                 // console.log("F min:" + parseInt(tempMin[i] * 1.8 + 32))
+        //                 $('.temp-high').eq(i)[0].innerHTML = tempMax[i]
+        //                 $('.temp-low').eq(i)[0].innerHTML = tempMin[i]
+        //                 // units
+        //                 setUnits();
+        //             }
+        //         }
+        //         if ($('#unit-selector').val() === "metric") {
+        //             for (let i = 0; i < 5; i++) {
+        //                 // console.log($('.temp-high').eq(i)[0].innerHTML)
+        //                 // console.log($('.temp-low').eq(i)[0].innerHTML)
+        //                 // console.log("C max:" + parseInt((tempMax[i] - 32) / 1.8))
+        //                 // console.log("C min:" + parseInt((tempMin[i] - 32) / 1.8))
+        //                 $('.temp-high').eq(i)[0].innerHTML = (parseInt((tempMax[i] - 32) / 1.8))
+        //                 $('.temp-low').eq(i)[0].innerHTML = (parseInt((tempMin[i] - 32) / 1.8))
+        //                 // units
+        //                 setUnits();
+        //             }
+        //         }
+        //         console.log('end convert')
+        //     })
+        // }
+
+        // <<--------- mapbox --------->>
+        mapboxgl.accessToken = MAPBOX_API_KEY;
+        const map = new mapboxgl.Map({
+            container: 'map', // container ID
+            style: 'mapbox://styles/mapbox/streets-v11', // style URL
+            center: [-98.4916, 29.4260], // starting position [lng, lat]
+            zoom: 10 // starting zoom
+        });
+
+        let geoCoder = new MapboxGeocoder({
+            accessToken: mapboxgl.accessToken,
+            mapboxgl: mapboxgl,
+            marker: false
+        })
+
+        map.addControl(
+            geoCoder
+        );
+
+        var marker = function (point) {
+            return new mapboxgl.Marker().setLngLat(point).addTo(map);
+        }
+
+        var popup = function (description) {
+            return new mapboxgl.Popup().setHTML(description).addTo(map);
+        }
+
+        function clearMarkers(){
+            return marker.remove();
+        }
+
+        geoCoder.on('result', function (e) {
+            marker(e.result.geometry.coordinates).setPopup(popup(e.result.place_name))
+            forecastInit(e.result.geometry.coordinates[1], e.result.geometry.coordinates[0], displayUnits)
+            prevLat = e.result.geometry.coordinates[1]
+            prevLon = e.result.geometry.coordinates[0]
+        })
+
+        map.on('click', (e) => {
+            marker(e.lngLat)
+            forecastInit(e.lngLat.lat, e.lngLat.lng, displayUnits)
+            prevLat = e.lngLat.lat
+            prevLon = e.lngLat.lng
+        });
+
     });
-
-    let geoCoder = new MapboxGeocoder({
-        accessToken: mapboxgl.accessToken,
-        mapboxgl: mapboxgl,
-        marker: false
-    })
-
-    map.addControl(
-        geoCoder
-    );
-
-    var marker = function(point){
-        return new mapboxgl.Marker().setLngLat(point).addTo(map);
-    }
-
-    var popup = function(description){
-        return new mapboxgl.Popup().setHTML(description).addTo(map);
-    }
-
-    geoCoder.on('result', function(e){
-        marker(e.result.geometry.coordinates).setPopup(popup(e.result.place_name))
-        mapInit(e.result.geometry.coordinates[1], e.result.geometry.coordinates[0])
-    })
-
-
-    map.on('click', (e) => {
-        marker(e.lngLat)
-        mapInit(e.lngLat.lat, e.lngLat.lng)
-    });
-
-});
 </script>
 
 </body>
