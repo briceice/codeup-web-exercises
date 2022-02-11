@@ -19,23 +19,31 @@
 
         #map {
             width: calc(100% - 30px);
-            height: 35em;
+            height: 32em;
             margin-bottom: 1em;
         }
         #unit-selector {
             position: absolute;
             z-index: 1;
             left: 15px;
-            top: 21em;
+            top: 22.5em;
+        }
+        #clear-markers {
+            position: absolute;
+            z-index: 1;
+            right: 275px;
+            top: 23.2em;
+            height: 2.2em;
         }
     </style>
 </head>
 <body>
 
 <select name="unit-selector" id="unit-selector">
-    <option value="imperial">Soccer</option>
+    <option selected value="imperial">Soccer</option>
     <option value="metric">Football</option>
 </select>
+<button type="button" id="clear-markers">Clear</button>
 <div id="forecasts" class="container-fluid"></div>
 <div id='map' class="container-fluid"></div>
 
@@ -84,7 +92,7 @@
                         ${new Date(day.dt * 1000).toDateString()}
                       </div>
                       <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><strong>High:</strong> ${parseInt(day.temp.max)} <span>&#176;</span>${displayUnitsTemp} <strong>Low:</strong> ${parseInt(day.temp.min)} <span>&#176;</span>${displayUnitsTemp}</li>
+                        <li class="list-group-item"><strong>High:</strong> ${parseInt(day.temp.max)} <span>&#176;</span>${displayUnitsTemp}<br><strong>Low:</strong> ${parseInt(day.temp.min)} <span>&#176;</span>${displayUnitsTemp}</li>
                         <li class="list-group-item">${day.weather[0].description} <img src="https://openweathermap.org/img/wn/${day.weather[0].icon}.png"></li>
                         <li class="list-group-item"><strong>Humidity:</strong> ${day.humidity}%</li>
                         <li class="list-group-item"><strong>Wind Speed:</strong> ${parseInt(day.wind_speed)} ${displayUnitsWind}</li>
@@ -174,8 +182,12 @@
         }
 
         function clearMarkers(){
-            return marker.remove();
+            marker.remove();
         }
+
+        $('#clear-markers').on('click', function(){
+            clearMarkers();
+        })
 
         geoCoder.on('result', function (e) {
             marker(e.result.geometry.coordinates).setPopup(popup(e.result.place_name))
