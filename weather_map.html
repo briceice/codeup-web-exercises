@@ -71,10 +71,12 @@
             });
         }
 
+        var prevLat = 29.4260
+        var prevLon = -98.4916
         var displayUnits = "imperial"
         var displayUnitsTemp = "F"
         var displayUnitsWind = "mph"
-        forecastInit(29.4260, -98.4916, displayUnits);
+        forecastInit(prevLat, prevLon, displayUnits);
 
         function getForecast(day) {
             return `
@@ -94,9 +96,6 @@
                 </div>
             `
         }
-
-        var prevLat = 29.4260
-        var prevLon = -98.4916
 
         function changeUnits(){
             $('#unit-selector').on('change', function (){
@@ -151,7 +150,7 @@
         const map = new mapboxgl.Map({
             container: 'map', // container ID
             style: 'mapbox://styles/mapbox/streets-v11', // style URL
-            center: [-98.4916, 29.4260], // starting position [lng, lat]
+            center: [prevLon, prevLat], // starting position [lng, lat]
             zoom: 10 // starting zoom
         });
 
@@ -165,28 +164,38 @@
             geoCoder
         );
 
-        var marker = function (point) {
-            return new mapboxgl.Marker().setLngLat(point).addTo(map);
-        }
+        // var marker = function (point) {
+        //     return new mapboxgl.Marker().setLngLat(point).addTo(map);
+        // }
+
+        // var markers = []
+        // var marker = function (point) {
+        //     var tempMarker = new mapboxgl.Marker().setLngLat(point).addTo(map)
+        //     markers.push(tempMarker);
+        //     console.log(markers.length)
+        //     return tempMarker
+        // }
 
         var popup = function (description) {
             return new mapboxgl.Popup().setHTML(description).addTo(map);
         }
 
-        const markerDraggable = new mapboxgl.Marker({
+        var markerDraggable = new mapboxgl.Marker({
                 color: 'orange',
                 draggable: true
             }).setLngLat([-98.4916, 29.4260]).addTo(map);
 
         geoCoder.on('result', function (e) {
-            marker(e.result.geometry.coordinates).setPopup(popup(e.result.place_name))
+            // marker(e.result.geometry.coordinates).setPopup(popup(e.result.place_name))
+            markerDraggable.setLngLat([e.result.geometry.coordinates[0], e.result.geometry.coordinates[1]]).setPopup(popup(e.result.place_name));
             forecastInit(e.result.geometry.coordinates[1], e.result.geometry.coordinates[0], displayUnits)
             prevLat = e.result.geometry.coordinates[1]
             prevLon = e.result.geometry.coordinates[0]
         })
 
         map.on('click', (e) => {
-            marker(e.lngLat)
+            // marker(e.lngLat)
+            markerDraggable.setLngLat([e.lngLat.lng, e.lngLat.lat]);
             forecastInit(e.lngLat.lat, e.lngLat.lng, displayUnits)
             prevLat = e.lngLat.lat
             prevLon = e.lngLat.lng
