@@ -28,22 +28,14 @@
             left: 15px;
             top: 22.5em;
         }
-        #clear-markers {
-            position: absolute;
-            z-index: 1;
-            right: 275px;
-            top: 23.2em;
-            height: 2.2em;
-        }
     </style>
 </head>
 <body>
 
 <select name="unit-selector" id="unit-selector">
-    <option selected value="imperial">Soccer</option>
-    <option value="metric">Football</option>
+    <option selected value="imperial"><span>&#176;</span>F, mph</option>
+    <option value="metric"><span>&#176;</span>C, m/s</option>
 </select>
-<button type="button" id="clear-markers">Clear</button>
 <div id="forecasts" class="container-fluid"></div>
 <div id='map' class="container-fluid"></div>
 
@@ -95,7 +87,7 @@
                         <li class="list-group-item"><strong>High:</strong> ${parseInt(day.temp.max)} <span>&#176;</span>${displayUnitsTemp}<br><strong>Low:</strong> ${parseInt(day.temp.min)} <span>&#176;</span>${displayUnitsTemp}</li>
                         <li class="list-group-item">${day.weather[0].description} <img src="https://openweathermap.org/img/wn/${day.weather[0].icon}.png"></li>
                         <li class="list-group-item"><strong>Humidity:</strong> ${day.humidity}%</li>
-                        <li class="list-group-item"><strong>Wind Speed:</strong> ${parseInt(day.wind_speed)} ${displayUnitsWind}</li>
+                        <li class="list-group-item"><strong>Wind Speed:</strong> ${parseFloat(day.wind_speed).toFixed(1)} ${displayUnitsWind}</li>
                         <li class="list-group-item"><strong>Air Pressure:</strong> ${day.pressure}</li>
                       </ul>
                     </div>
@@ -181,13 +173,10 @@
             return new mapboxgl.Popup().setHTML(description).addTo(map);
         }
 
-        function clearMarkers(){
-            marker.remove();
-        }
-
-        $('#clear-markers').on('click', function(){
-            clearMarkers();
-        })
+        const markerDraggable = new mapboxgl.Marker({
+                color: 'orange',
+                draggable: true
+            }).setLngLat([-98.4916, 29.4260]).addTo(map);
 
         geoCoder.on('result', function (e) {
             marker(e.result.geometry.coordinates).setPopup(popup(e.result.place_name))
@@ -202,6 +191,12 @@
             prevLat = e.lngLat.lat
             prevLon = e.lngLat.lng
         });
+
+        markerDraggable.on('dragend', function(e){
+            forecastInit(e.target._lngLat.lat, e.target._lngLat.lng, displayUnits)
+            prevLat = e.target._lngLat.lat
+            prevLon = e.target._lngLat.lng
+        })
 
     });
 </script>
