@@ -403,12 +403,31 @@
 // console.log(whichStringIsLonger("bobby", 2)); // returns false
 // console.log(whichStringIsLonger(1, "lou")); // returns false
 
-function convertLowHighToObject(lowHigh) {
-    var lowHighArray = lowHigh.split(", ")
-    return  {
-        low: parseInt(lowHighArray[0]),
-        high: parseInt(lowHighArray[1])
+// function convertLowHighToObject(lowHigh) {
+//     var lowHighArray = lowHigh.split(", ")
+//     return  {
+//         low: parseInt(lowHighArray[0]),
+//         high: parseInt(lowHighArray[1])
+//     }
+// }
+//
+// console.log(convertLowHighToObject("35, 42"));
+
+//ex: countDuplicates("adsjfdsfsfjsdjfhacabcsbajda")
+// returns { a: 5, d: 4, s: 5, j: 4, f: 4, h: 1, c: 2, b: 2 }
+function countDuplicates(input){
+    let inputArray = input.split('');
+    let characters = [];
+    let output = {};
+    for (let i = 0; i < inputArray.length; i++) {
+        if(!characters.includes(inputArray[i])){
+            characters.push(inputArray[i])
+            output[inputArray[i]] = 1;
+        } else {
+            output[inputArray[i]] = output[inputArray[i]] + 1
+        }
     }
+    return output
 }
 
-console.log(convertLowHighToObject("35, 42"));
+console.log(countDuplicates("adsjfdsfsfjsdjfhacabcsbajda"))
