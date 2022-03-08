@@ -415,19 +415,49 @@
 
 //ex: countDuplicates("adsjfdsfsfjsdjfhacabcsbajda")
 // returns { a: 5, d: 4, s: 5, j: 4, f: 4, h: 1, c: 2, b: 2 }
-function countDuplicates(input){
-    let inputArray = input.split('');
-    let characters = [];
-    let output = {};
-    for (let i = 0; i < inputArray.length; i++) {
-        if(!characters.includes(inputArray[i])){
-            characters.push(inputArray[i])
-            output[inputArray[i]] = 1;
-        } else {
-            output[inputArray[i]] = output[inputArray[i]] + 1
-        }
+// function countDuplicates(input){
+//     let inputArray = input.split('');
+//     let characters = [];
+//     let output = {};
+//     for (let i = 0; i < inputArray.length; i++) {
+//         if(!characters.includes(inputArray[i])){
+//             characters.push(inputArray[i])
+//             output[inputArray[i]] = 1;
+//         } else {
+//             output[inputArray[i]] = output[inputArray[i]] + 1
+//         }
+//     }
+//     return output
+// }
+//
+// console.log(countDuplicates("adsjfdsfsfjsdjfhacabcsbajda"))
+
+// Write a function called makePerson. It takes 2 arguments: personName and age.
+//     personName must be at least 1 character long. age must be between 1 and 150.
+// If either of the parameters is invalid, output an appropriate message to the console and return FALSE.
+//     If both parameters are valid, return an object containing personName and age.
+//     E.g.,
+//     console.log(makePerson("Bob", 30)); // outputs {personName:"Bob", age:30}
+// console.log(makePerson("", 30));
+// // outputs:
+// Person name cannot be blank
+// false
+function makePerson(personName, age){
+    if (personName.length < 1 || !(typeof personName == "string")){
+        console.log("Invalid name");
+        return false;
     }
-    return output
+    if (age < 1 || age > 150 || isNaN(age)){
+        console.log("Invalid age");
+        return false;
+    }
+    return {
+        personName,
+        age
+    };
 }
 
-console.log(countDuplicates("adsjfdsfsfjsdjfhacabcsbajda"))
+console.log(makePerson("Bob", 30))
+console.log(makePerson("", 30))
+console.log(makePerson("Bob", ))
+console.log(makePerson(43, 30))
